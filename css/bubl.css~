@@ -29,8 +29,6 @@ border-radius: 50%;
 }
 
 .bubble-right {
-	display:inline-block;
-	max-width:250px;
     text-align: center;
     margin: 3em; 
     width: 20em;
@@ -60,8 +58,6 @@ border-radius: 50%;
 }
 
 .bubble-left {
-    display:inline-block;
-    max-width:250px;
     text-align: center;
     margin: 3em; 
     width: 20em;

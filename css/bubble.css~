@@ -1,0 +1,61 @@
+/*
+ * speech / think mixin
+ * origin: http://codepen.io/mynimi/pen/OPbqXB
+ */
+body {
+  background: skyblue;
+}
+
+.think-right {
+  width: 20em;
+  height: 10em;
+  background: rgba(255, 255, 255, 0.8) ;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 50%;
+  position: relative;
+}
+
+
+.think-right:before {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  z-index: -1;
+  width: 1em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8) ;
+  -webkit-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
+          transform: rotate(15deg);
+  box-shadow: 20px -40px 1px 7px rgba(255, 255, 255, 0.8), 10px -17px 1px 3px rgba(255, 255, 255, 0.8); 
+}
+
+
+
+.think-left {
+  width: 20em;
+  height: 10em;
+  background: rgba(255, 255, 255, 0.8) ;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 50%;
+  position: relative;
+}
+.think-left:before {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  z-index: -1; 
+  width: 1em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8) ;
+  -webkit-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+          transform: rotate(-15deg);
+  box-shadow: -20px -40px 0 7px white, -10px -17px 0 3px white;
+}

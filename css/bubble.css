@@ -1,0 +1,172 @@
+/*
+ * speech / think mixin
+ * origin: http://codepen.io/mynimi/pen/OPbqXB
+ */
+body {
+  background: skyblue; }
+
+.bubble {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 3em; }
+  .bubble:nth-of-type(1) {
+    width: 20em;
+    height: 10em;
+    background: white;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    position: relative; }
+    .bubble:nth-of-type(1):before {
+      content: "";
+      position: absolute;
+      bottom: 3%;
+      left: 10%;
+      z-index: -1;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent transparent transparent white;
+      border-width: 5em 0 0 10em;
+      transform: rotate(-10deg); }
+  .bubble:nth-of-type(2) {
+    width: 20em;
+    height: 10em;
+    background: white;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    position: relative; }
+    .bubble:nth-of-type(2):before {
+      content: "";
+      position: absolute;
+      bottom: 3%;
+      right: 10%;
+      z-index: -1;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent transparent white transparent;
+      border-width: 0 0 5em 10em;
+      transform: rotate(10deg); }
+  .bubble:nth-of-type(3) {
+    width: 20em;
+    height: 10em;
+    background: white;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    position: relative; }
+    .bubble:nth-of-type(3):before {
+      content: "";
+      position: absolute;
+      top: 3%;
+      left: 10%;
+      z-index: -1;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: white transparent transparent transparent;
+      border-width: 5em 10em 0 0;
+      transform: rotate(10deg); }
+  .bubble:nth-of-type(4) {
+    width: 20em;
+    height: 10em;
+    background: white;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    position: relative; }
+    .bubble:nth-of-type(4):before {
+      content: "";
+      position: absolute;
+      top: 3%;
+      right: 10%;
+      z-index: -1;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent white transparent transparent;
+      border-width: 0px 10em 5em 0px;
+      transform: rotate(-10deg); }
+  .bubble:nth-of-type(5) {
+    width: 20em;
+    height: 10em;
+    background: white;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    position: relative; }
+    .bubble:nth-of-type(5):before {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      z-index: -1;
+      width: 1em;
+      height: 0.5em;
+      border-radius: 50%;
+      background: white;
+      transform: rotate(15deg);
+      box-shadow: 20px -40px 0 7px white, 10px -17px 0 3px white; }
+  .bubble:nth-of-type(6) {
+    width: 20em;
+    height: 10em;
+    background: white;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    position: relative; }
+    .bubble:nth-of-type(6):before {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      right: 0;
+      z-index: -1;
+      width: 1em;
+      height: 0.5em;
+      border-radius: 50%;
+      background: white;
+      transform: rotate(-15deg);
+      box-shadow: -20px -40px 0 7px white, -10px -17px 0 3px white; }
+  .bubble:nth-of-type(7) {
+    width: 20em;
+    height: 10em;
+    background: white;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    position: relative; }
+    .bubble:nth-of-type(7):before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: 0;
+      z-index: -1;
+      width: 1em;
+      height: 0.5em;
+      border-radius: 50%;
+      background: white;
+      transform: rotate(-15deg);
+      box-shadow: 20px 40px 0 7px white, 10px 17px 0 3px white; }
+  .bubble:nth-of-type(8) {
+    width: 20em;
+    height: 10em;
+    background: white;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    position: relative; }
+    .bubble:nth-of-type(8):before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: 0;
+      z-index: -1;
+      width: 1em;
+      height: 0.5em;
+      border-radius: 50%;
+      background: white;
+      transform: rotate(15deg);
+      box-shadow: -20px 40px 0 7px white, -10px 17px 0 3px white; }
