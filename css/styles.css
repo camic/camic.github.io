@@ -16,9 +16,9 @@ div#navigation li{margin-bottom:5px;}
 div#extra{background:#8ea86c;}
 div#footer{background:#4d642d; color: #eaf7d9; }
 div#footer p{margin:0;padding:5px 10px}
-div#container{width:600px;margin:0 auto}
-div#content{float:left;width:400px}
-div#navigation{float:right;width:200px}
+div#container{width:500px;margin:0 auto}
+div#content{float:left;width:500px}
+div#navigation{float:right;width:300px}
 div#extra{float:right;clear:right;width:200px}
 div#footer{clear:both;width:100%}
 
