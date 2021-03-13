@@ -71,9 +71,82 @@
 			  	</span>
 				</section>
 
-				<section data-background-image="img/dream-girl.jpg" alt="dream upload - téléversement des rêves">
-				<span class="bubble-left" style="left: 2px; top: 50px;">Maintenant </br>Partagez vos rêves</br> </br><a href="register.html">ShareDreams.com</a> </span>
+
+<section data-background="#81beea">
+<h2>L'échangeur de rêves</h2></br> </br>
+Attention: Cette activité est dangereuse.</br>
+Les effets à long terme sont encore inconnus.
+</br>
+</br>
+Cochez la case si vous acceptez:	
+</br>
+</br>
+<script type="text/javascript">
+
+EnableSubmit = function(val)
+{
+    var sbmt = document.getElementById("submit");
+
+    if (val.checked == true)
+    {
+        sbmt.disabled = false;
+    }
+    else
+    {
+        sbmt.disabled = true;
+    }
+} 
+</script>
+<label>Je suis conscient des dommages au cerveau.</label>
+ </br>
+<label>Ce service a déjà provoqué la mort</label>
+ </br></br>
+ <input type="checkbox" name="yes" value="yes" id="yes"  onclick="EnableSubmit(this)"><label for="yes"> Oui, j'accepte!</label>
+ </br></br>
+<input type="submit" id="submit" disabled  onclick="Reveal.next()">
+</section>
+
+
+				<section  data-background="#4d7e65" data-auto-animate alt="online dream catalog">
+				<h1>Choisir une catégorie de votre prochain rêve:</h1></br>
+				<h4>
+				<input type="radio" id="love"  onclick="Reveal.slide(12)">
+				<label>Amour, romance</label></br>
+				</h4>
+				<h4>
+				<input type="radio" id="action"  onclick="Reveal.slide(13)">				
+				<label>Action and aventures</label></br>
+				</h4>
+				<h4>
+				<input type="radio" id="porn"  onclick="Reveal.slide(14)">
+				<label>Porno et XXX</label></br>
+				</h4>
+ 				</section>
+
+				<section  data-background="#e981ea"  alt="Dreams category: Love and romance">
+				<span class="square" style="left: 10px; top: 1px;">Romantisme et amourettes</span>
+					<div class="r-stack">
+						<img src="img/Romantic-Love-Background.jpg" width="320" height="568">
+						<img src="img/Couple-love.jpg" width="305" height="250"  alt="loving couple" class="fragment fade-in-then-out">
+					</div>
+ 				</section>
+
+				<section data-background="#81ea96" alt="Action and adventures">
+				<span class="square" style="left: 2px; top: 1px;">Action et aventures</span>
+				<span class="bubble-right" style="left: 200px; top: 15px;">Attention!</span>
+				<img src="img/hqdefault.jpg" width="480" height="360" >
+ 				</section>
+
+	  			<section data-background-image="img/rooster-fusion.jpg" alt="porn">
+				<span class="square" style="left: 2px; top: 1px;">XXX et adulte</span>
+				<span class="fragment">
+				<span class="think-left" style="left: 100px; top: 10px;">Basique!</span>
+					<div class="r-stack">
+						<img src="img/chickensmating.jpg" width="321" height="321" >
+					</div>
+			  	</span>
 				</section>
+
 
 				<section>
 				<p>Fin du Chapitre.</p>
