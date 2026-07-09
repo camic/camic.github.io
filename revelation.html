@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>reveal.js - Barebones</title>
+		<link rel="stylesheet" type="text/css" href="css/bulles.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+	</head>
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-background-image="./img/SweetCity.jpg">
+					<h2>Barebones Presentation</h2>
+					<p>This example contains the bare minimum includes and markup required to run a reveal.js presentation.</p>
+				</section>
+
+				<section data-transition="zoom-in fade-out" data-background-image="./img/1.png">
+					<p class="bubble thought">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, nemo, debitis.</p>
+					<h3>data-transition: zoom-in fade-out</h3>
+				</section>
+
+<section data-background-image="./img/3.png">
+<p class="bubble speech">Lorem ipsum dolor sit amet</p>
+<img class="r-stretch" src="img/transparent.png">
+</section>
+
+
+
+<section data-auto-animate data-background-image="./img/bubbles-water3.jpg">
+Auto-Animate will animate all matching elements between the two sections
+  <h1>Auto-Animate</h1>
+  <p class="bubble speech">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quos</p>
+</section>
+<section data-auto-animate data-background-image="./img/bubbles-water3.jpg">
+  <h1 style="margin-top: 100px; color: red;">Auto-Animate</h1>
+</section>
+
+<section data-auto-animate data-background-image="./img/bubbles-water.jpg">
+  <p class="bubble speech">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quos</p>
+  <h1>Implicit</h1>
+</section>
+<section data-auto-animate data-background-image="./img/bubbles-water.jpg">
+  <h1>Implicit</h1>
+  <h1>Animation</h1>
+</section>
+
+<section data-auto-animate data-background-image="./img/albert-einstein.jpg">
+with a matching data-ID 
+  <div data-id="box" style="height: 50px; background: salmon;"></div>
+</section>
+<section data-auto-animate data-background-image="./img/albert-einstein.jpg">
+  <div data-id="box" style="height: 200px; background: blue;"></div>
+</section>
+
+
+<section data-background-image="./img/water3.jpg">
+<p class="bubble speech">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quos</p>
+<div class="r-stack">
+r-stack layout helper lets you center and place multiple elements on top of each other
+  <img class="fragment" src="https://placekitten.com/450/300" width="450" height="300">
+  <img class="fragment" src="https://placekitten.com/300/450" width="300" height="450">
+  <img class="fragment" src="https://placekitten.com/400/400" width="400" height="400">
+</div>
+</section>
+
+<section data-background-image="./img/water.jpg">
+  <img class="fragment fade-out" data-fragment-index="0" src="https://placekitten.com/450/300" width="450" height="300">
+  <img class="fragment current-visible" data-fragment-index="0" src="https://placekitten.com/300/450" width="300" height="450">
+  <img class="fragment" src="https://placekitten.com/400/400" width="400" height="400">
+</section>
+
+
+<section data-background-image="./img/3.png">
+<p class="bubble speech">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quos</p>
+<h2>Stretch img to remaining space</h2>
+<img class="r-stretch" src="https://placekitten.com/300/450">
+<p>Image byline</p>
+</section>
+
+				<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4">
+					<h2>Video background</h2>
+	<p class="bubble thought right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, DROITE, debitis.</p>
+	<p class="bubble speech right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quos</p>
+				</section>
+
+				<section data-background-image="./img/Scientistbubble3.png">
+					<p class="bubble speech right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quos</p>
+					<h2 class="r-fit-text">HELLO WORLD</h2>
+				</section>
+
+
+				<section id="stretch" data-background-image="./img/Scientistbubble4.png">
+					<h2>Stretch</h2>
+					<p>Makes an element as tall as possible while remaining within the slide bounds.</p>
+					  <h2>Stretch Example</h2>
+					  <img src="https://placekitten.com/300/450" class="r-stretch">
+					  <p>Image byline</p>
+				</section>
+
+
+				<section data-background-image="img/candybar.jpg">
+					<h2>Stack Example</h2>
+					<p>class fade-in-then-out</p>
+					<p class="bubble thought right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, DROITE, debitis.</p>
+					<div class="r-stack">
+						<img src="https://placekitten.com/450/300" width="450" height="300" class="fragment fade-in-then-out">
+						<img src="https://placekitten.com/300/450" width="300" height="450" class="fragment fade-in-then-out">
+						<img src="https://placekitten.com/400/400" width="400" height="400" class="fragment fade-in-then-out">
+					</div>
+				</section>
+
+
+				<section data-transition="zoom" data-background-image="img/fumble.png">
+					<p class="bubble thought right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, DROITE, debitis.</p>
+					<h2 class="r-fit-text">HELLO fumble</h2>
+					<p class="bubble speech right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quos</p>
+				</section>
+
+				<section data-transition="zoom" data-background-image="img/candybar2.jpg">
+					<h3>h3 before p data-transition=zoom</h3>
+					<p class="bubble thought">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, debitis.</p>
+				</section>
+
+				<section data-transition="zoom-in fade-out" data-background-image="img/swimming2.jpg">
+					<p class="bubble thought">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, debitis.</p>
+					<h3>h3 after p with zoom-in fade-out</h3>
+				</section>
+
+				<section data-transition="concave" data-background-image="img/swim3.jpg">
+					<h3>data-transition: concave</h3>
+				</section>
+
+				<section data-transition="convex" data-background-image="img/swimming.jpg">
+					<h3>data-transition: convex</h3>
+				</section>
+
+				<section data-background-image="img/4.png">
+					<h2>Presentation</h2>
+					<p>the end</p>
+				</section>
+
+
+
+
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script>
+			Reveal.initialize();
+		</script>
+
+	</body>
+</html>

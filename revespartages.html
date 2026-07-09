@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Le partage des rêves en ligne.</title>
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="./css/bubl.css">
+		<meta name="summary" content="HANS STEIN invente la machine à partager les rêves" />
+		<meta name="author" content="SMartin Carmichael" />
+		<meta name="copyright" content="&#169; 2021 Martin Carmichael  all rights reserved" />
+		<meta name="description" language="en" content="a dream sharing online service" />
+		<meta name="description" language="fr" content="le partage des rêves en ligne" />
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-background-image="img/Waking-up.jpg" alt="wake up">
+				<span class="square" style="left: 40px; top: 80px;">Immédiatement au réveil...</br>Hans Stein demande à sa patiente:</span>
+ 				</section>
+
+				<section data-background-image="img/4.png" alt="hans stein" data-transition="zoom-in fade-out">
+				<span class="bubble-right" style="left: 210px; top: 123px;">Vous souvenez-vous de votre rêve?</span>
+				</section>
+
+				<section data-background-image="img/lastdream.jpg" alt="dernier rêve" data-transition="convex">
+				<span class="bubble-right" style="left: 10px; top: 128px;">Parlez-moi de votre rêve...</span>
+				<span class="fragment">
+				<span class="bubble-left" style="right: 50px; top: 50px;">Avez-vous rêvé aux oiseaux blancs?</span>
+			  	</span>
+ 				</section>
+
+				<section data-background-image="img/lastdream2.jpg" alt="last dream play back" data-transition="zoom-in fade-out">
+				<span class="bubble-right" style="left: 100px; top: 150px;">Comment connaissez-vous mon rêve?</span>
+ 				</section>
+
+				<section data-background-image="img/Headset.jpg" alt="brain head set" data-transition="convex">
+				<span class="bubble-left" style="left: 52px; top: 85px;">Vous avez dormi avec un casque.</span>
+				<span class="fragment">
+				<span class="bubble-right" style="left: 100px; top: 100px;">Je vous ai transmis mon rêve.</span>
+			  	</span>
+ 				</section>
+
+				<section data-background-video="snd/pump.mp4" data-transition="zoom">
+				<span class="square" style="left: 100px; top: 150px;">La machine à rêves a pompé mon rêve dans votre tête.</span>
+ 				</section>
+
+
+	  			<section data-background-image="img/Brain-activity.jpg" alt="brain activity">
+				<span class="bubble-right" style="left: 160px; top: 95px;">Doctor Stein! </br>C'est de la magie!</span>
+				<span class="fragment">
+				<span class="bubble-right" style="left: 100px; top: 30px;">Vous partagez votre intimité avec moi.</span>
+			  	</span>
+				</section>
+
+				<section data-background-image="img/dreambg.png" alt="dream activity" data-transition="zoom-in fade-out">
+				<span class="bubble-right" style="left: 200px; top: 100px;">Ce n'est que le début!</span>
+				<span class="fragment">
+				<span class="bubble-left" style="right: 120px; top: 130px;">le site web</br>"partage ton rêve" est en ligne.</span>
+			  	</span>
+				</section>
+
+				<section data-background-image="img/intimacy.jpg" alt="moon dreaming" data-transition="convex">
+				<span class="bubble-right" style="left: 100px; top: 135px;">Les gens choisissent leur rêve. </span>
+				<span class="fragment">
+				<span class="bubble-right" style="left: 10px; top: 100px;">Comme on choisit un film.</span>
+			  	</span>
+				</section>
+
+				<section data-background-image="img/register.png" alt="inscription">
+				<span class="bubble-left" style="left: 2px; top: 50px;">L'inscription est obligatoire</span>
+				<span class="fragment">
+				<span class="bubble-right" style="left: 10px; top: 100px;">Vous devez renoncer à toute réclamation</span>
+					<div class="r-stack">
+						<img src="img/accepte.png" width="415" height="260" >
+					</div>
+			  	</span>
+				</section>
+
+
+<section data-auto-animate data-background="#81beea">
+<h2>L'échangeur de rêves</h2></br> </br>
+Attention: Cette activité est dangereuse.</br>
+</br>
+Vous renoncez à toute réclamation.</br>
+Cochez la case si vous acceptez que:	
+</br>
+</br>
+</br><div data-id="box" style="height: 50px;">
+</br>
+Le partage de rêve peut tuer.
+</div>
+</section>
+
+
+<section data-auto-animate data-background="#beea81">
+<h2>L'échangeur de rêves</h2></br> </br>
+Attention: Cette activité est dangereuse.</br>
+</br>
+Vous renoncez à toute réclamation.</br>
+Cochez la case si vous acceptez que:	
+</br>
+</br>
+<div data-id="box" style="height: 50px; background: red;">
+</br>
+<p class="bblanc">Le partage de rêve PEUT ME TUER.</p>
+</br>&nbsp;</br>
+</div>
+
+<script type="text/javascript">
+
+EnableSubmit = function(val)
+{
+    var sbmt = document.getElementById("submit");
+
+    if (val.checked == true)
+    {
+        sbmt.disabled = false;
+    }
+    else
+    {
+        sbmt.disabled = true;
+    }
+} 
+</script>
+ </br></br>
+ <input type="checkbox" name="yes" value="yes" id="yes"  onclick="EnableSubmit(this)"><label for="yes"> Oui, j'accepte</label>
+ </br></br>
+<input type="submit" id="submit" disabled  onclick="location.href='merci.html'">
+</section>
+
+				<section>
+				<p>Fin du Chapitre.</p>
+				<p>Le partage des rêves.</p>
+				<p>&nbsp;</p>
+				<p><a href="index-fr.html">Table des Chapitres (Retour)</a></p>
+
+				</section>
+
+			</div>
+		</div>
+		<script src="./dist/reveal.js"></script>
+		<script>
+			Reveal.initialize(
+				{
+				center: false,
+				progress: false,
+				controls: true,
+				height:600,
+				width:600,
+   			slideNumber: true,
+ 		      margin: 0,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+    			minScale: 0.1,
+    			maxScale: 1.5,
+  		      margin: 0,
+				}
+			);
+		</script>
+<a title="Real Time Web Analytics" href="http://clicky.com/101346176"><img alt="Clicky" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+<script async src="//static.getclicky.com/101346176.js"></script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101346176ns.gif" /></p></noscript>
+	</body>
+</html>

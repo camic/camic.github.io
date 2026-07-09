@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>The dream sharing online service</title>
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="./css/bubl.css">
+		<meta name="summary" content="HANS STEIN invents the dreams playback machine" />
+		<meta name="author" content="Martin Carmichael" />
+		<meta name="copyright" content="&#169; 2021 Martin Carmichael  all rights reserved" />
+		<meta name="description" language="en" content="a dream sharing online service" />
+		<meta name="description" language="fr" content="le partage des rêves en ligne" />
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-background-image="img/Waking-up.jpg" alt="wake up">
+				<span class="square" style="left: 4px; top: 120px;">Immediately after wake up...</br>Hans Stein ask his patient:</span>
+ 				</section>
+
+				<section data-background-image="img/4.png" alt="hans stein" data-transition="zoom-in fade-out">
+				<span class="bubble-right" style="left: 210px; top: 113px;">Can you remember your last dream?</span>
+				</section>
+
+				<section data-background-image="img/lastdream.jpg" alt="dernier rêve" data-transition="convex">
+				<span class="bubble-right" style="left: 10px; top: 128px;">Please tell me about your dream...</span>
+				<span class="fragment">
+				<span class="bubble-left" style="right: 2px; top: 50px;">Was there any white birds?</span>
+			  	</span>
+ 				</section>
+
+				<section data-background-image="img/lastdream2.jpg" alt="last dream play back" data-transition="zoom-in fade-out">
+				<span class="bubble-right" style="left: 100px; top: 150px;">How can you know?</br>About my last dream?</span>
+ 				</section>
+
+				<section data-background-image="img/Headset.jpg" alt="brain head set">
+				<span class="bubble-left" style="left: 2px; top: 15px;">You slept with a headset.</span>
+				<span class="fragment">
+				<span class="bubble-right" style="left: 100px; top: 100px;">You heard and saw my own dream.</span>
+			  	</span>
+ 				</section>
+
+				<section data-background-video="snd/pump.mp4" data-transition="convex">
+				<span class="square" style="left: 100px; top: 50px;">The playback machine pumped a dream into your brain</span>
+ 				</section>
+
+	  			<section data-background-image="img/Brain-activity.jpg" alt="brain activity">
+				<span class="bubble-left" style="left: 120px; top: 15px;">Doctor Stein! </br></br>This is magic!</span>
+				<span class="fragment">
+				<span class="bubble-right" style="left: 100px; top: 30px;">You shared your intimacy with me.</span>
+			  	</span>
+				</section>
+
+				<section data-background-image="img/dreambg.png" alt="dream activity">
+				<span class="bubble-right" style="left: 200px; top: 100px;">This is just the beginning.</span>
+				<span class="fragment">
+				<span class="bubble-left" style="right: 100px; top: 130px;">The dream sharing </br>web site is online.</span>
+			  	</span>
+				</section>
+
+				<section data-background-image="img/intimacy.jpg" alt="moon dreaming" data-transition="convex">
+				<span class="bubble-right" style="left: 50px; top: 35px;">You choose your dream like a movie.</span>
+				<span class="fragment">
+				<span class="bubble-right" style="left: 100px; top: 30px;">And enjoy it during the night.</span>
+			  	</span>
+				</section>
+
+
+				<section data-background-image="img/register.png" alt="inscription" data-transition="zoom-in fade-out">
+				<span class="bubble-left" style="left: 2px; top: 50px;">You have to</br> sign-up first</span>
+				<span class="fragment">
+				<span class="bubble-right" style="left: 10px; top: 100px;">Accept risks</br>Give up any claim</span>
+					<div class="r-stack">
+						<img src="img/accept.jpg" width="415" height="260" >
+					</div>
+			  	</span>
+				</section>
+
+
+<section data-auto-animate data-background="#81beea">
+<h2>The Dream Exchange</h2></br> </br>
+Warning: dream sharing might be dangerous.</br>
+</br>
+I give up any claim.
+</br>
+</br>
+</br><div data-id="box" style="height: 50px;">
+</br>
+I know that dream sharing can kill me.
+</div>
+</section>
+
+
+<section data-auto-animate data-background="#beea81">
+<h2>The Dream Exchange</h2></br> </br>
+Warning: dream sharing might be dangerous.</br>
+</br>
+I give up any claim.
+</br>
+</br>
+<div data-id="box" style="height: 50px; background: red;">
+</br>
+I know that dream sharing CAN KILL ME.
+</div>
+
+<script type="text/javascript">
+
+EnableSubmit = function(val)
+{
+    var sbmt = document.getElementById("submit");
+
+    if (val.checked == true)
+    {
+        sbmt.disabled = false;
+    }
+    else
+    {
+        sbmt.disabled = true;
+    }
+} 
+</script>
+ </br></br>
+ <input type="checkbox" name="yes" value="yes" id="yes"  onclick="EnableSubmit(this)"><label for="yes"> Yes, I agree</label>
+ </br></br>
+<input type="submit" id="submit" disabled  onclick="location.href='thankyou.html'">
+</section>
+
+
+				<section>
+				<p>End of Chapter.</p>
+				<p>&nbsp;</p>
+				<p><a href="index.html">Table of Chapters (Return)</a></p>
+
+				</section>
+
+			</div>
+		</div>
+		<script src="./dist/reveal.js"></script>
+		<script>
+			Reveal.initialize(
+				{
+				center: false,
+				progress: false,
+				controls: true,
+				height:600,
+				width:600,
+   			slideNumber: true,
+ 		      margin: 0,
+				transition: 'zoom', // none/fade/slide/convex/concave/zoom
+    			minScale: 0.1,
+    			maxScale: 1.5,
+  		      margin: 0,
+				}
+			);
+		</script>
+<a title="Real Time Web Analytics" href="http://clicky.com/101346176"><img alt="Clicky" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+<script async src="//static.getclicky.com/101346176.js"></script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101346176ns.gif" /></p></noscript>
+	</body>
+</html>
