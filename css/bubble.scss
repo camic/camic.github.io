@@ -1,0 +1,205 @@
+/*
+ * speech / think mixin
+ * origin: http://codepen.io/mynimi/pen/OPbqXB
+ */
+ 
+// Speechbubbles
+@mixin bubble($type, $w, $h, $bg, $p, $dir){
+  width: $w;
+  height: $h;
+  background: $bg;
+  box-sizing: border-box;
+  padding: $p;
+  border-radius: 50%;
+  position: relative;
+  
+  @if $type == speech{
+    @if $dir == bottom-left{
+      &:before{
+        content: "";
+        position: absolute;
+        bottom: 3%;
+        left: 10%;
+        z-index: -1;
+        @include triangle_ra(($w/2), ($h/2), bottom-left, $bg);
+        transform: rotate(-10deg);
+      }
+    }
+    
+    @if $dir == bottom-right{
+      &:before{
+        content: "";
+        position: absolute;
+        bottom: 3%;
+        right: 10%;
+        z-index: -1;
+        @include triangle_ra(($w/2), ($h/2), bottom-right, $bg);
+        transform: rotate(10deg);
+      }
+    }
+    
+    @if $dir == top-left{
+      &:before{
+        content: "";
+        position: absolute;
+        top: 3%;
+        left: 10%;
+        z-index: -1;
+        @include triangle_ra(($w/2), ($h/2), top-left, $bg);
+        transform: rotate(10deg);
+      }
+    }
+    
+    @if $dir == top-right{
+      &:before{
+        content: "";
+        position: absolute;
+        top: 3%;
+        right: 10%;
+        z-index: -1;
+        @include triangle_ra(($w/2), ($h/2), top-right, $bg);
+        transform: rotate(-10deg);
+      }
+    }
+  }
+  @if $type == think{
+    @if $dir == bottom-left{
+      &:before{
+        content: "";
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+        z-index: -1;
+        width: ($w/20);
+        height: ($h/20);
+        border-radius: 50%;
+        background: $bg;
+        transform: rotate(15deg);
+        box-shadow: 20px -40px 0 7px $bg, 10px -17px 0 3px $bg;
+      }
+    }
+    @if $dir == bottom-right{
+      &:before{
+        content: "";
+        position: absolute;
+        bottom: -30px;
+        right: 0;
+        z-index: -1;
+        width: ($w/20);
+        height: ($h/20);
+        border-radius: 50%;
+        background: $bg;
+        transform: rotate(-15deg);
+        box-shadow: -20px -40px 0 7px $bg, -10px -17px 0 3px $bg;
+      }
+    }
+    @if $dir == top-right{
+      &:before{
+        content: "";
+        position: absolute;
+        top: -30px;
+        right: 0;
+        z-index: -1;
+        width: ($w/20);
+        height: ($h/20);
+        border-radius: 50%;
+        background: $bg;
+        transform: rotate(15deg);
+        box-shadow: -20px 40px 0 7px $bg, -10px 17px 0 3px $bg;
+      }
+    }
+    @if $dir == top-left{
+      &:before{
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 0;
+        z-index: -1;
+        width: ($w/20);
+        height: ($h/20);
+        border-radius: 50%;
+        background: $bg;
+        transform: rotate(-15deg);
+        box-shadow: 20px 40px 0 7px $bg, 10px 17px 0 3px $bg;
+      }
+    }
+  }
+}
+
+// Right-Angled Triangle
+@mixin triangle_ra($w, $h, $dir, $c){
+    width: 0;
+    height: 0;
+    border-style: solid;
+
+    @if $dir == bottom-left{
+        border-color: transparent transparent transparent $c;
+        border-width: $h 0 0 $w;
+    }
+
+    @if $dir == bottom-right {
+        border-color: transparent transparent $c transparent;
+        border-width: 0 0 $h $w;
+    }
+
+    @if $dir == top-left {
+        border-color: $c transparent transparent transparent;
+        border-width: $h $w 0 0;
+    }
+
+    @if $dir == top-right {
+        border-color: transparent $c transparent transparent;
+        border-width: 0px $w $h 0px;
+    }
+}
+
+@mixin flexbox($direction, $wrap, $justify, $align){
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+body{
+  background: skyblue;
+}
+
+.bubble{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 3em;
+  
+  &:nth-of-type(1){
+    @include bubble(speech, 20em, 10em, white, 30px, bottom-left);  
+  }
+  
+  &:nth-of-type(2){
+    @include bubble(speech, 20em, 10em, white, 30px, bottom-right);  
+  }
+  
+  &:nth-of-type(3){
+    @include bubble(speech, 20em, 10em, white, 30px, top-left);  
+  }
+  
+  &:nth-of-type(4){
+    @include bubble(speech, 20em, 10em, white, 30px, top-right);  
+  }
+  
+  &:nth-of-type(5){
+    @include bubble(think, 20em, 10em, white, 30px, bottom-left);  
+  }
+  
+  &:nth-of-type(6){
+    @include bubble(think, 20em, 10em, white, 30px, bottom-right);  
+  }
+  
+  &:nth-of-type(7){
+    @include bubble(think, 20em, 10em, white, 30px, top-left);  
+  }
+  
+  &:nth-of-type(8){
+    @include bubble(think, 20em, 10em, white, 30px, top-right);  
+  }
+}
