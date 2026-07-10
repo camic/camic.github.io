@@ -4,20 +4,16 @@
  * of external markdown documents.
  */
 
-import { Marked } from 'marked';
-import { markedSmartypants } from 'marked-smartypants';
+import { marked } from 'marked';
 
 const DEFAULT_SLIDE_SEPARATOR = '\r?\n---\r?\n',
-	  DEFAULT_VERTICAL_SEPARATOR = null,
-	  DEFAULT_NOTES_SEPARATOR = '^\s*notes?:',
+	  DEFAULT_NOTES_SEPARATOR = 'notes?:',
 	  DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR = '\\\.element\\\s*?(.+?)$',
 	  DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR = '\\\.slide:\\\s*?(\\\S.+?)$';
 
 const SCRIPT_END_PLACEHOLDER = '__SCRIPT_END__';
 
-// match an optional line number offset and highlight line numbers
-// [<line numbers>] or [<offset>: <line numbers>]
-const CODE_LINE_NUMBER_REGEX = /\[\s*((\d*):)?\s*([\s\d,|-]*)\]/;
+const CODE_LINE_NUMBER_REGEX = /\[([\s\d,|-]*)\]/;
 
 const HTML_ESCAPE_MAP = {
   '&': '&amp;',
@@ -31,7 +27,6 @@ const Plugin = () => {
 
 	// The reveal.js instance this plugin is attached to
 	let deck;
-	let markedInstance = null;
 
 	/**
 	 * Retrieves the markdown contents of a slide section
@@ -40,22 +35,22 @@ const Plugin = () => {
 	function getMarkdownFromSlide( section ) {
 
 		// look for a <script> or <textarea data-template> wrapper
-		const template = section.querySelector( '[data-template]' ) || section.querySelector( 'script' );
+		var template = section.querySelector( '[data-template]' ) || section.querySelector( 'script' );
 
 		// strip leading whitespace so it isn't evaluated as code
-		let text = ( template || section ).textContent;
+		var text = ( template || section ).textContent;
 
 		// restore script end tags
 		text = text.replace( new RegExp( SCRIPT_END_PLACEHOLDER, 'g' ), '</script>' );
 
-		const leadingWs = text.match( /^\n?(\s*)/ )[1].length,
+		var leadingWs = text.match( /^\n?(\s*)/ )[1].length,
 			leadingTabs = text.match( /^\n?(\t*)/ )[1].length;
 
 		if( leadingTabs > 0 ) {
-			text = text.replace( new RegExp('\\n?\\t{' + leadingTabs + '}(.*)','g'), function(m, p1) { return '\n' + p1 ; } );
+			text = text.replace( new RegExp('\\n?\\t{' + leadingTabs + '}','g'), '\n' );
 		}
 		else if( leadingWs > 1 ) {
-			text = text.replace( new RegExp('\\n? {' + leadingWs + '}(.*)', 'g'), function(m, p1) { return '\n' + p1 ; } );
+			text = text.replace( new RegExp('\\n? {' + leadingWs + '}', 'g'), '\n' );
 		}
 
 		return text;
@@ -70,11 +65,11 @@ const Plugin = () => {
 	 */
 	function getForwardedAttributes( section ) {
 
-		const attributes = section.attributes;
-		const result = [];
+		var attributes = section.attributes;
+		var result = [];
 
-		for( let i = 0, len = attributes.length; i < len; i++ ) {
-			const name = attributes[i].name,
+		for( var i = 0, len = attributes.length; i < len; i++ ) {
+			var name = attributes[i].name,
 				value = attributes[i].value;
 
 			// disregard attributes that are used for markdown loading/parsing
@@ -97,12 +92,10 @@ const Plugin = () => {
 	 * values for what's not defined.
 	 */
 	function getSlidifyOptions( options ) {
-		const markdownConfig = deck?.getConfig?.().markdown;
 
 		options = options || {};
-		options.separator = options.separator || markdownConfig?.separator || DEFAULT_SLIDE_SEPARATOR;
-		options.verticalSeparator = options.verticalSeparator || markdownConfig?.verticalSeparator || DEFAULT_VERTICAL_SEPARATOR;
-		options.notesSeparator = options.notesSeparator || markdownConfig?.notesSeparator || DEFAULT_NOTES_SEPARATOR;
+		options.separator = options.separator || DEFAULT_SLIDE_SEPARATOR;
+		options.notesSeparator = options.notesSeparator || DEFAULT_NOTES_SEPARATOR;
 		options.attributes = options.attributes || '';
 
 		return options;
@@ -116,10 +109,10 @@ const Plugin = () => {
 
 		options = getSlidifyOptions( options );
 
-		const notesMatch = content.split( new RegExp( options.notesSeparator, 'mgi' ) );
+		var notesMatch = content.split( new RegExp( options.notesSeparator, 'mgi' ) );
 
-		if( notesMatch.length === 2 && markedInstance ) {
-			content = notesMatch[0] + '<aside class="notes">' + markedInstance.parse(notesMatch[1].trim()) + '</aside>';
+		if( notesMatch.length === 2 ) {
+			content = notesMatch[0] + '<aside class="notes">' + marked(notesMatch[1].trim()) + '</aside>';
 		}
 
 		// prevent script end tags in the content from interfering
@@ -138,10 +131,10 @@ const Plugin = () => {
 
 		options = getSlidifyOptions( options );
 
-		const separatorRegex = new RegExp( options.separator + ( options.verticalSeparator ? '|' + options.verticalSeparator : '' ), 'mg' ),
+		var separatorRegex = new RegExp( options.separator + ( options.verticalSeparator ? '|' + options.verticalSeparator : '' ), 'mg' ),
 			horizontalSeparatorRegex = new RegExp( options.separator );
 
-		let matches,
+		var matches,
 			lastIndex = 0,
 			isHorizontal,
 			wasHorizontal = true,
@@ -150,7 +143,7 @@ const Plugin = () => {
 
 		// iterate until all blocks between separators are stacked up
 		while( matches = separatorRegex.exec( markdown ) ) {
-			const notes = null;
+			var notes = null;
 
 			// determine direction (horizontal by default)
 			isHorizontal = horizontalSeparatorRegex.test( matches[0] );
@@ -179,10 +172,10 @@ const Plugin = () => {
 		// add the remaining slide
 		( wasHorizontal ? sectionStack : sectionStack[sectionStack.length-1] ).push( markdown.substring( lastIndex ) );
 
-		let markdownSections = '';
+		var markdownSections = '';
 
 		// flatten the hierarchical stack, and insert <section data-markdown> tags
-		for( let i = 0, len = sectionStack.length; i < len; i++ ) {
+		for( var i = 0, len = sectionStack.length; i < len; i++ ) {
 			// vertical
 			if( sectionStack[i] instanceof Array ) {
 				markdownSections += '<section '+ options.attributes +'>';
@@ -211,7 +204,7 @@ const Plugin = () => {
 
 		return new Promise( function( resolve ) {
 
-			const externalPromises = [];
+			var externalPromises = [];
 
 			[].slice.call( scope.querySelectorAll( 'section[data-markdown]:not([data-markdown-parsed])') ).forEach( function( section, i ) {
 
@@ -264,13 +257,13 @@ const Plugin = () => {
 
 		return new Promise( function( resolve, reject ) {
 
-			const xhr = new XMLHttpRequest(),
+			var xhr = new XMLHttpRequest(),
 				url = section.getAttribute( 'data-markdown' );
 
-			const datacharset = section.getAttribute( 'data-charset' );
+			var datacharset = section.getAttribute( 'data-charset' );
 
 			// see https://developer.mozilla.org/en-US/docs/Web/API/element.getAttribute#Notes
-			if( datacharset !== null && datacharset !== '' ) {
+			if( datacharset != null && datacharset != '' ) {
 				xhr.overrideMimeType( 'text/html; charset=' + datacharset );
 			}
 
@@ -315,17 +308,17 @@ const Plugin = () => {
 	 */
 	function addAttributeInElement( node, elementTarget, separator ) {
 
-		const markdownClassesInElementsRegex = new RegExp( separator, 'mg' );
-		const markdownClassRegex = new RegExp( "([^\"= ]+?)=\"([^\"]+?)\"|(data-[^\"= ]+?)(?=[\" ])", 'mg' );
-		let nodeValue = node.nodeValue;
-		let matches,
+		var mardownClassesInElementsRegex = new RegExp( separator, 'mg' );
+		var mardownClassRegex = new RegExp( "([^\"= ]+?)=\"([^\"]+?)\"|(data-[^\"= ]+?)(?=[\" ])", 'mg' );
+		var nodeValue = node.nodeValue;
+		var matches,
 			matchesClass;
-		if( matches = markdownClassesInElementsRegex.exec( nodeValue ) ) {
+		if( matches = mardownClassesInElementsRegex.exec( nodeValue ) ) {
 
-			const classes = matches[1];
-			nodeValue = nodeValue.substring( 0, matches.index ) + nodeValue.substring( markdownClassesInElementsRegex.lastIndex );
+			var classes = matches[1];
+			nodeValue = nodeValue.substring( 0, matches.index ) + nodeValue.substring( mardownClassesInElementsRegex.lastIndex );
 			node.nodeValue = nodeValue;
-			while( matchesClass = markdownClassRegex.exec( classes ) ) {
+			while( matchesClass = mardownClassRegex.exec( classes ) ) {
 				if( matchesClass[2] ) {
 					elementTarget.setAttribute( matchesClass[1], matchesClass[2] );
 				} else {
@@ -343,39 +336,34 @@ const Plugin = () => {
 	 */
 	function addAttributes( section, element, previousElement, separatorElementAttributes, separatorSectionAttributes ) {
 
-		if ( element !== null && element.childNodes !== undefined && element.childNodes.length > 0 ) {
-			let previousParentElement = element;
-			for( let i = 0; i < element.childNodes.length; i++ ) {
-				const childElement = element.childNodes[i];
+		if ( element != null && element.childNodes != undefined && element.childNodes.length > 0 ) {
+			var previousParentElement = element;
+			for( var i = 0; i < element.childNodes.length; i++ ) {
+				var childElement = element.childNodes[i];
 				if ( i > 0 ) {
-					let j = i - 1;
+					var j = i - 1;
 					while ( j >= 0 ) {
-						const aPreviousChildElement = element.childNodes[j];
-						if ( typeof aPreviousChildElement.setAttribute === 'function' && aPreviousChildElement.tagName !== "BR" ) {
+						var aPreviousChildElement = element.childNodes[j];
+						if ( typeof aPreviousChildElement.setAttribute == 'function' && aPreviousChildElement.tagName != "BR" ) {
 							previousParentElement = aPreviousChildElement;
 							break;
 						}
 						j = j - 1;
 					}
 				}
-				let parentSection = section;
-				if( childElement.nodeName ===  "section" ) {
+				var parentSection = section;
+				if( childElement.nodeName ==  "section" ) {
 					parentSection = childElement ;
 					previousParentElement = childElement ;
 				}
-				if ( typeof childElement.setAttribute === 'function' || childElement.nodeType === Node.COMMENT_NODE ) {
+				if ( typeof childElement.setAttribute == 'function' || childElement.nodeType == Node.COMMENT_NODE ) {
 					addAttributes( parentSection, childElement, previousParentElement, separatorElementAttributes, separatorSectionAttributes );
 				}
 			}
 		}
 
-		if ( element.nodeType === Node.COMMENT_NODE ) {
-		let targetElement = previousElement;
-		if( targetElement && ( targetElement.tagName === 'UL' || targetElement.tagName === 'OL' ) ) {
-			targetElement = targetElement.lastElementChild || targetElement;
-		}
-
-		if ( addAttributeInElement( element, targetElement, separatorElementAttributes ) === false ) {
+		if ( element.nodeType == Node.COMMENT_NODE ) {
+			if ( addAttributeInElement( element, previousElement, separatorElementAttributes ) == false ) {
 				addAttributeInElement( element, section, separatorSectionAttributes );
 			}
 		}
@@ -387,16 +375,16 @@ const Plugin = () => {
 	 */
 	function convertSlides() {
 
-		const sections = deck.getRevealElement().querySelectorAll( '[data-markdown]:not([data-markdown-parsed])');
+		var sections = deck.getRevealElement().querySelectorAll( '[data-markdown]:not([data-markdown-parsed])');
 
 		[].slice.call( sections ).forEach( function( section ) {
 
 			section.setAttribute( 'data-markdown-parsed', true )
 
-			const notes = section.querySelector( 'aside.notes' );
-			const markdown = getMarkdownFromSlide( section );
+			var notes = section.querySelector( 'aside.notes' );
+			var markdown = getMarkdownFromSlide( section );
 
-			section.innerHTML = markedInstance ? markedInstance.parse( markdown ) : markdown;
+			section.innerHTML = marked( markdown );
 			addAttributes( 	section, section, null, section.getAttribute( 'data-element-attributes' ) ||
 							section.parentNode.getAttribute( 'data-element-attributes' ) ||
 							DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
@@ -433,42 +421,43 @@ const Plugin = () => {
 
 			deck = reveal;
 
-			let { renderer: customRenderer, animateLists, smartypants, ...markedOptions } = deck.getConfig().markdown || {};
+			let { renderer, animateLists, ...markedOptions } = deck.getConfig().markdown || {};
 
-			const renderer = customRenderer || {
-				code( { text, lang } ) {
-					let language = lang || '';
-					let lineNumberOffset = '';
+			if( !renderer ) {
+				renderer = new marked.Renderer();
+
+				renderer.code = ( code, language ) => {
+
+					// Off by default
 					let lineNumbers = '';
 
+					// Users can opt in to show line numbers and highlight
+					// specific lines.
+					// ```javascript []        show line numbers
+					// ```javascript [1,4-8]   highlights lines 1 and 4-8
 					if( CODE_LINE_NUMBER_REGEX.test( language ) ) {
-						let lineNumberOffsetMatch =  language.match( CODE_LINE_NUMBER_REGEX )[2];
-						if (lineNumberOffsetMatch){
-							lineNumberOffset =  `data-ln-start-from="${lineNumberOffsetMatch.trim()}"`;
-						}
-
-						lineNumbers = language.match( CODE_LINE_NUMBER_REGEX )[3].trim();
+						lineNumbers = language.match( CODE_LINE_NUMBER_REGEX )[1].trim();
 						lineNumbers = `data-line-numbers="${lineNumbers}"`;
 						language = language.replace( CODE_LINE_NUMBER_REGEX, '' ).trim();
 					}
 
-					text = escapeForHTML( text );
+					// Escape before this gets injected into the DOM to
+					// avoid having the HTML parser alter our code before
+					// highlight.js is able to read it
+					code = escapeForHTML( code );
 
-					return `<pre><code ${lineNumbers} ${lineNumberOffset} class="${language}">${text}</code></pre>`;
-				},
-			};
-			if( animateLists === true && !customRenderer ) {
-				renderer.listitem = function( token ) {
-					const text = token.tokens ? this.parser.parseInline( token.tokens ) : ( token.text || '' );
-					return `<li class="fragment">${text}</li>`;
+					return `<pre><code ${lineNumbers} class="${language}">${code}</code></pre>`;
 				};
 			}
 
-			markedInstance = new Marked();
-			markedInstance.use( { renderer, ...markedOptions } );
-			if( smartypants ) {
-				markedInstance.use( markedSmartypants() );
+			if( animateLists === true ) {
+				renderer.listitem = text => `<li class="fragment">${text}</li>`;
 			}
+
+			marked.setOptions( {
+				renderer,
+				...markedOptions
+			} );
 
 			return processSlides( deck.getRevealElement() ).then( convertSlides );
 
@@ -478,8 +467,7 @@ const Plugin = () => {
 		processSlides: processSlides,
 		convertSlides: convertSlides,
 		slidify: slidify,
-		get marked() { return markedInstance; },
-		get markdownOptions() { return deck ? deck.getConfig().markdown || {} : {}; }
+		marked: marked
 	}
 
 };

@@ -1,4 +1,4 @@
-import { loadScript } from '../utils/loader'
+import { loadScript } from '../utils/loader.js'
 
 /**
  * Manages loading and registering of reveal.js plugins.
@@ -12,7 +12,7 @@ export default class Plugins {
 		// Flags our current state (idle -> loading -> loaded)
 		this.state = 'idle';
 
-		// An id:instance map of currently registered plugins
+		// An id:instance map of currently registed plugins
 		this.registeredPlugins = {};
 
 		this.asyncDependencies = [];
@@ -171,7 +171,7 @@ export default class Plugins {
 	/**
 	 * Registers a new plugin with this reveal.js instance.
 	 *
-	 * reveal.js waits for all registered plugins to initialize
+	 * reveal.js waits for all regisered plugins to initialize
 	 * before considering itself ready, as long as the plugin
 	 * is registered before calling `Reveal.initialize()`.
 	 */
@@ -206,6 +206,7 @@ export default class Plugins {
 		else {
 			console.warn( 'reveal.js: "'+ id +'" plugin has already been registered' );
 		}
+
 	}
 
 	/**
