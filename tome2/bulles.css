@@ -1,0 +1,133 @@
+:root {
+  --r-blanc-semi-transparent: rgba(255, 255, 255, 0.7);
+}
+
+
+p.bubble {
+	position: relative;
+	width: 300px;
+	text-align: center;
+	line-height: 1.4em;
+	margin: 40px auto;
+	background-color: var(--r-blanc-semi-transparent);
+	border: 4px solid #333;
+	border-radius: 30px;
+	font-family: sans-serif;
+	padding: 20px;
+	font-size: large;
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+p.thought {
+	width: 300px;
+	border-radius: 200px;
+	padding: 30px;	
+}
+
+p.bubble.smaller {
+	width: 200px;
+}
+
+/*  triangle et bulles */
+p.bubble:before,
+p.bubble:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+/*  gros du triangle (contour exterieur)  */
+p.speech:before {
+	left: 30px;
+	bottom: -50px;
+	border: 25px solid;
+	border-color: #333 transparent transparent #333;
+}
+
+/* petit triangle intérieur (par dessus)  */
+p.speech:after {
+	left: 34px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: rgba(255, 255, 255, 0.9) transparent transparent rgba(255, 255, 255, 0.9);
+}
+
+/* intérieur triangle droite */
+p.right.speech::after {
+	left: 270px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: var(--r-blanc-semi-transparent) var(--r-blanc-semi-transparent) transparent transparent;
+}
+
+/* contour triangle de droite */
+p.right.speech:before {
+	left: 264px;
+	bottom: -50px;
+	border: 25px solid;
+	border-color: #333 #333 transparent transparent;
+}
+
+
+p.thought:before,
+p.thought:after {
+	/* grosse bulle */
+	left: 15px;
+	bottom: -30px;
+	width: 40px;
+	height: 40px;
+	background-color: var(--r-blanc-semi-transparent);
+	border: 4px solid #333;
+	-webkit-border-radius: 28px;
+	-moz-border-radius: 28px;
+	border-radius: 28px;
+}
+
+p.thought:after {
+	/* petite bulle */
+	width: 20px;
+	height: 20px;
+	left: 35px;
+	bottom: -40px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+}
+
+/* intérieur de la grosse bulle */
+p.right.thought:before {
+	left: 80%;
+	bottom: -30px;
+	width: 40px;
+	height: 40px;
+	background-color: var(--r-blanc-semi-transparent);
+	border: 4px solid #333;
+	-webkit-border-radius: 28px;
+	-moz-border-radius: 28px;
+	border-radius: 28px;
+}
+
+/* petite bulle droite */
+p.right.thought:after {
+        /* bulles à droite */
+	width: 20px;
+	height: 20px;
+	left: 80%;
+	bottom: -40px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+}
+
+.square {
+position: absolute;
+display:inline-block;
+max-width:250px;
+min-height:1.5em;
+padding: 10px;
+background: rgba(255, 200, 200, 0.8) ;
+border: solid 1px;
+}
+</style>
+
